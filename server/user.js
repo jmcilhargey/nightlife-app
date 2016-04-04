@@ -4,10 +4,11 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var User = new Schema({
-    github: {
+    google: {
         id: String,
-        displayName: String,
-        userName: String
+        token: String,
+        name: String,
+        email: String,
     },
     events: [String]
 });

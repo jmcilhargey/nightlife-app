@@ -88,8 +88,9 @@ body {
 
 .main {
     padding-bottom: 35px;
-    background: #19191f;
-    border-top: 2px solid #3C3A41;
+    background: #120F19;
+    border-top: 2px solid #7B7882;
+    border-bottom: 2px solid #7B7882;
 }
 
 .main h2 {
@@ -119,7 +120,7 @@ body {
 #image2,
 #image3 {
     height: 200px;  
-    border: 4px solid #3C3A41;
+    border: 4px solid #7B7882;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }
@@ -131,17 +132,27 @@ body {
     cursor: pointer;
 }
 
+.supporting {
+    background: #3D3B43;
+}
+
+blockquote {
+    margin: 20px 0;
+    border: none;
+    color: #A9A9A9;
+}
+
 .footer {
     bottom: 0;
     width: 100%;
     height: 175px;
-    background-color: #101014;
-    border-top: 2px solid #3C3A41;
+    background-color: #161519;
+    border-top: 2px solid #7B7882;
 }
 
 .footer p {
     color: white;
-    margin-top: 20px;
+    padding-top: 25px;
 }
 
 .footer ul {
