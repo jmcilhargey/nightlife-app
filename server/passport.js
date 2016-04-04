@@ -1,8 +1,7 @@
 "use strict";
 
-var GitHubStrategy = require("passport-github").Strategy;
+var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 var User = require("user.js");
-var configAuth = require("auth.js");
 
 module.exports = function(passport) {
     passport.serializeUser(function(user, done) {
@@ -15,14 +14,14 @@ module.exports = function(passport) {
         });
     });
     
-    passport.use(new GitHubStrategy({
-        clientID: process.env.GITHUB_KEY,
-        clientSecret: process.env.GITHUB_SECRET,
-        callbackUrl: process.env.APP_URL + "auth/github/callback"
+    passport.use(new GoogleStrategy({
+        clientID: process.env.GOOGLE_KEY,
+        clientSecret: process.env.GOOGLE_SECRET,
+        callbackUrl: process.env.APP_URL + "auth/google/callback"
     },
     function(token, refreshToken, profile, done) {
         process.nextTick(function() {
-           User.findOne({ "github.id": profile.id }, function(err, user) {
+           User.findOne({ "google.id": profile.id }, function(err, user) {
                 if (err) {
                     return done(err);
                 }
@@ -31,11 +30,10 @@ module.exports = function(passport) {
                 } else {
                     var newUser = new User();
                     
-                    newUser.github.id = profile.id;
-                    newUser.github.username = profile.username;
-                    newUser.github.displayName = profile.displayName;
-                    newUser.github.publicRepos = profile._json.public_repos;
-                    newUser.github.nbrClicks.clicks = 0;
+                    newUser.google.id = profile.id;
+                    newUser.google.token = token;
+                    newUser.github.name = profile.displayName;
+                    newUser.google.email = profile.emails[0].value;
                     
                     newUser.save(function(err) {
                         if (err) { throw err; }

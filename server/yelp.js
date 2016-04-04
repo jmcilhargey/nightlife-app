@@ -4,8 +4,6 @@ var querystring = require("querystring")
 var oauth = require("oauth");
 var OAuth = oauth.OAuth;
 
-var baseUrl = "https://api.yelp.com/v2/search/";
-
 var auth = new OAuth(
     null,
     null,
@@ -20,14 +18,25 @@ module.exports = function() {
     
     this.get = function(city, sort) {
         
+        var baseUrl = "https://api.yelp.com/v2/search/";
         var options = {
             location: city,
             sort: sort || 0,
             limit: 20,
             category_filter: "nightlife"
         };
+        
         var promise = new Promise(function(resolve, reject) {
-            auth.get(baseUrl + "?" + querystring.stringify(options), process.env.YELP_TOKEN, process.env.YELP_TOKEN_SECRET, function(err, _data) {
+            new OAuth(
+                null,
+                null,
+                process.env.YELP_KEY,
+                process.env.YELP_SECRET,
+                "1.0",
+                null,
+                "HMAC-SHA1"
+                )
+            .get(baseUrl + "?" + querystring.stringify(options), process.env.YELP_TOKEN, process.env.YELP_TOKEN_SECRET, function(err, _data) {
                if (err) { console.log(err); }
                var data = JSON.parse(_data);
                resolve(data);

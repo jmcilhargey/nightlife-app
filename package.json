@@ -19,7 +19,6 @@
     "multer": "^1.1.0",
     "oauth": "^0.9.14",
     "passport": "^0.3.2",
-    "passport-github": "^1.1.0",
     "querystring": "^0.2.0",
     "serve-favicon": "^2.3.0",
     "socket.io": "~0.9.14"
