@@ -3,6 +3,7 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+var Yelp = require("./yelp.js");
 
 require("dotenv").load();
 var app = express();
@@ -14,15 +15,21 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
-    res.redirect("/login")
+    return;
   }
 }
 
 mongoose.connect(process.env.MONGO_URI);
 
-app.get("/api/:search", function(req, res) {
-    var url = "http://api.yelp.com/v2/"
-})
+var yelpApi = new Yelp();
+
+app.get("/search", function(req, res) {
+  yelpApi.search("San Francisco", 0).then(function(err, data) {
+    if (err) { throw err; }
+    res.json(data);
+  });
+
+});
 
 app.listen(process.env.PORT, function() {
   console.log("Listening on port " + process.env.PORT);
