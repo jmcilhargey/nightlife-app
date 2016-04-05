@@ -16,12 +16,12 @@ var auth = new OAuth(
     
 module.exports = function() {
     
-    this.get = function(city, sort) {
+    this.get = function(city) {
         
         var baseUrl = "https://api.yelp.com/v2/search/";
         var options = {
             location: city,
-            sort: sort || 0,
+            sort: 0,
             limit: 20,
             category_filter: "nightlife"
         };
@@ -42,6 +42,7 @@ module.exports = function() {
                resolve(data);
             });
         });
+        
         return promise;
     };
     

@@ -36,10 +36,9 @@ app.get("/", function(req, res) {
   res.sendFile("index.html");
 });
 
-app.get("/search", isLoggedIn, function(req, res) {
-  yelpApi.search(req.body.city, req.body.sort).then(function(err, data) {
-    if (err) { console.log(err); }
-    res.json(JSON.stringify(data));
+app.get("/search", function(req, res) {
+  yelpApi.search(req.query.city, 0).then(function(data) {
+    res.json(data);
   });
 });
 
