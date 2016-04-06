@@ -36,8 +36,8 @@ app.get("/", function(req, res) {
   res.sendFile("index.html");
 });
 
-app.get("/search", function(req, res) {
-  yelpApi.search(req.query.city, 0).then(function(data) {
+app.get("/api/search", function(req, res) {
+  yelpApi.search(req.query.searchCity, req.query.sortBy).then(function(data) {
     res.json(data);
   });
 });

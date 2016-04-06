@@ -86,6 +86,14 @@ body {
     background-color: rgba(0, 0, 0, 0.25);
 }
 
+.radio-inline {
+    color: white;
+    padding-top: 10px;
+    font-size: 16px;
+    font-weight: 100;
+    letter-spacing: 1px;
+}
+
 .main {
     padding-bottom: 35px;
     background: #120F19;
