@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="results">
+        <div ng-class-odd="'row odd'" ng-class-even="'row even'" ng-repeat="business in results.businesses">
+            <div class="col-sm-3">
+                <a ng-href="{{ business.url }}">
+                    <div class="thumbnail">
+                        <img ng-src="{{ business.image_url }}" target="_blank">
+                        <p>{{ business.name }}</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-2">
+                <p>Rating - <i class="fa fa-yelp">&nbsp;{{ business.rating }}</i></p>
+                <p>Reviews - {{ business.review_count }}</p>
+                <p>Type - {{ business.categories[0][0] }}</p>
+            </div>
+            <div class="col-sm-6">
+                <em>{{ business.snippet_text }}</em>
+                <div class="btn btn-primary btn-lg">Going Tonight - 10</div>
+            </div>
+        </div>
+    </div>

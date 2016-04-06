@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <i class="fa fa-moon-o fa-2x">&nbsp;<span class="highlight">Nightlife</span> App</i>
+                <a ui-sref="home.welcome"><i class="fa fa-moon-o fa-2x">&nbsp;<span class="highlight">Nightlife</span> App</i></a>
             </div>
                 <ul class="nav nav-pills navbar-right">
                     <li><a href="#popular">Popular</a></li>
@@ -13,7 +13,7 @@
         </nav>
     <div class="jumbotron">
         <h1>Search for events near you</h1>
-        <form name="searchForm" ng-submit="newSearch()" ui-sref="home.search" novalidate>
+        <form name="searchForm" ng-submit="newSearch(city, sort)" ui-sref="home.search" novalidate>
             <div class="input-group">
                 <input type="text" class="form-control" ng-model="city" ng-minlength="3" ng-maxlength="50" required>
                 <span class="input-group-btn">

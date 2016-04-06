@@ -18,47 +18,33 @@ angular.module("nightlifeApp", ["ngRoute", "ui.router"])
     
     .controller("MainController", ["$scope", "$state", "Search", function($scope, $state, Search) {
         
-        $scope.newSearch = function() {
-            Search.find($scope.city, $scope.sort).success(function(data) {
+        $scope.newSearch = function(searchCity, sortBy) {
+            
+            Search.find(searchCity, sortBy).success(function(data) {
                 $scope.results = data;
             });
             $state.go("home.search");
         };
     }])
+
     
     .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state("home", {
                url: "/home",
                controller: "MainController",
-               templateUrl: "home.html"
+               templateUrl: "/views/home.html"
             })
         
             .state("home.welcome", {
                 url: "/welcome",
-                templateUrl: "welcome.html"
+                templateUrl: "/views/welcome.html"
             })
             
             .state("home.search", {
                 url: "/search",
-                templateUrl: "search.html"
+                templateUrl: "/views/search.html"
             });
         $urlRouterProvider.otherwise("/home/welcome");
     }]);
-    
-    /*
-    .config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
-        $routeProvider
-            .when("/", {
-                templateUrl: "home.html",
-                controller: "HomeController"
-            })
-            .when("/search", {
-                templateUrl: "search.html",
-                controller: "SearchController"
-            })
-            .otherwise({
-                redirectTo: "/"
-            })
-    }]);*/
 })();

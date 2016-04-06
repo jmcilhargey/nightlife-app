@@ -16,12 +16,12 @@ var auth = new OAuth(
     
 module.exports = function() {
     
-    this.get = function(city, sort) {
+    this.get = function(searchCity, sortBy) {
         
         var baseUrl = "https://api.yelp.com/v2/search/";
         var options = {
-            location: city,
-            sort: sort,
+            location: searchCity,
+            sort: sortBy,
             limit: 20,
             category_filter: "nightlife"
         };
