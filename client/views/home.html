@@ -2,18 +2,24 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a ui-sref="home.welcome"><i class="fa fa-moon-o fa-2x">&nbsp;<span class="highlight">Nightlife</span> App</i></a>
+                <a ui-sref="home.welcome"><i class="fa fa-moon-o fa-2x">&nbsp;<span class="highlight">Nightlife</span>&nbsp;App</i></a>
+                <ul>
+                    <li>{{ user.name }}</li>
+                    <li>{{ user.email }}</li>
+                </ul>
             </div>
                 <ul class="nav nav-pills navbar-right">
-                    <li><a href="#popular">Popular</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li ng-hide="authenticated"><a href="auth/google" target="_self"><i class="fa fa-google-plus"></i>&nbsp;Sign In</a></li>
+                    <li ng-show="authenticated"><a href="auth/logout" target="_self"><i class="fa fa-google-plus"></i>&nbsp;Sign Out</a></li>
+                    <li><a href="#about" target="_self">About</a></li>
+                    <li><a href="#popular" target="_self">Popular</a></li>                    
+                    <li><a href="#contact" target="_self">Contact</a></li>
                 </ul>
             </div>
         </nav>
     <div class="jumbotron">
         <h1>Search for events near you</h1>
-        <form name="searchForm" ng-submit="newSearch(city, sort)" ui-sref="home.search" novalidate>
+        <form name="searchForm" ng-submit="newSearch(city, sort)" novalidate>
             <div class="input-group">
                 <input type="text" class="form-control" ng-model="city" ng-minlength="3" ng-maxlength="50" required>
                 <span class="input-group-btn">

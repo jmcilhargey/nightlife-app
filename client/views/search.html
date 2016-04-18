@@ -1,22 +1,24 @@
 <div class="container">
     <div class="results">
         <div ng-class-odd="'row odd'" ng-class-even="'row even'" ng-repeat="business in results.businesses">
-            <div class="col-sm-3">
-                <a ng-href="{{ business.url }}">
+            <div class="flex-thumbnail">
+                <a ng-href="{{ business.url }}" target="_blank">
                     <div class="thumbnail">
                         <img ng-src="{{ business.image_url }}" target="_blank">
                         <p>{{ business.name }}</p>
                     </div>
                 </a>
             </div>
-            <div class="col-sm-2">
-                <p>Rating - <i class="fa fa-yelp">&nbsp;{{ business.rating }}</i></p>
-                <p>Reviews - {{ business.review_count }}</p>
-                <p>Type - {{ business.categories[0][0] }}</p>
+            <div class="flex-review">
+                <ul>
+                    <li>Rating - <i class="fa fa-yelp">&nbsp;{{ business.rating }}</i></li>
+                    <li>Reviews - {{ business.review_count }}</li>
+                    <li>Type - {{ business.categories[0][0] }}</li>                    
+                </ul>
             </div>
-            <div class="col-sm-6">
+            <div class="flex-snippet">
                 <em>{{ business.snippet_text }}</em>
-                <div class="btn btn-primary btn-lg">Going Tonight - 10</div>
+                <div class="btn btn-primary btn-lg" ng-click="addGoing(business.id)" data-toggle="tooltip" title="{{ listGoing(business.id) }}" data-placement="bottom" tooltip>Going Tonight - <span ng-bind="checkGoing(business.id)"></span></div>
             </div>
         </div>
     </div>

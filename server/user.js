@@ -8,9 +8,9 @@ var User = new Schema({
         id: String,
         token: String,
         name: String,
-        email: String,
+        email: String
     },
     events: [String]
-});
+}, { versionKey: false });
 
 module.exports = mongoose.model("User", User);
