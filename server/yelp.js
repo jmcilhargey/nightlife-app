@@ -1,6 +1,6 @@
 "use strict";
-
-var querystring = require("querystring")
+require("dotenv").config();
+var stringToUrl = require("./serialize.js");
 var oauth = require("oauth");
 var OAuth = oauth.OAuth;
 
@@ -18,7 +18,7 @@ module.exports = function() {
     
     this.get = function(searchCity, sortBy) {
         
-        var baseUrl = "https://api.yelp.com/v2/search/";
+        var baseUrl = "https://api.yelp.com/v2/search/json";
         var options = {
             location: searchCity,
             sort: sortBy,
@@ -36,7 +36,7 @@ module.exports = function() {
                 null,
                 "HMAC-SHA1"
                 )
-            .get(baseUrl + "?" + querystring.stringify(options), process.env.YELP_TOKEN, process.env.YELP_TOKEN_SECRET, function(err, _data) {
+            .get(baseUrl + "?" + stringToUrl(options), process.env.YELP_TOKEN, process.env.YELP_TOKEN_SECRET, function(err, _data) {
                if (err) { console.log(err); }
                var data = JSON.parse(_data);
                resolve(data);

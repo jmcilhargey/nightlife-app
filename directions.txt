@@ -1,0 +1,357 @@
+{
+    "status": 200,
+    "headers": {
+        "content-type": "application/json; charset=UTF-8",
+        "date": "Mon, 22 Aug 2016 00:52:02 GMT",
+        "expires": "Tue, 23 Aug 2016 00:52:02 GMT",
+        "cache-control": "public, max-age=86400",
+        "server": "mafe",
+        "x-xss-protection": "1; mode=block",
+        "x-frame-options": "SAMEORIGIN",
+        "alternate-protocol": "443:quic",
+        "alt-svc": "quic=\":443\"; ma=2592000; v=\"35,34,33,32,31,30\"",
+        "accept-ranges": "none",
+        "vary": "Accept-Language,Accept-Encoding",
+        "connection": "close"
+    },
+    "json": {
+        "geocoded_waypoints": [
+            {
+                "geocoder_status": "OK",
+                "place_id": "ChIJN1iRXjKNj4AR51jBgfatf-E",
+                "types": [
+                    "street_address"
+                ]
+            },
+            {
+                "geocoder_status": "OK",
+                "partial_match": true,
+                "place_id": "ChIJ01Z4TsTyj4AREhM6rUZwmFk",
+                "types": [
+                    "premise"
+                ]
+            },
+            {
+                "geocoder_status": "OK",
+                "place_id": "ChIJN1iRXjKNj4AR51jBgfatf-E",
+                "types": [
+                    "street_address"
+                ]
+            }
+        ],
+        "routes": [
+            {
+                "bounds": {
+                    "northeast": {
+                        "lat": 37.77975470000001,
+                        "lng": -121.977842
+                    },
+                    "southwest": {
+                        "lat": 37.7745851,
+                        "lng": -121.9960835
+                    }
+                },
+                "copyrights": "Map data ©2016 Google",
+                "legs": [
+                    {
+                        "distance": {
+                            "text": "1.2 mi",
+                            "value": 1975
+                        },
+                        "duration": {
+                            "text": "24 mins",
+                            "value": 1415
+                        },
+                        "end_address": "2251 San Ramon Valley Blvd, San Ramon, CA 94583, USA",
+                        "end_location": {
+                            "lat": 37.77958539999999,
+                            "lng": -121.977842
+                        },
+                        "start_address": "126 Claremont Crest Ct, San Ramon, CA 94583, USA",
+                        "start_location": {
+                            "lat": 37.775585,
+                            "lng": -121.9960835
+                        },
+                        "steps": [
+                            {
+                                "distance": {
+                                    "text": "0.1 mi",
+                                    "value": 174
+                                },
+                                "duration": {
+                                    "text": "2 mins",
+                                    "value": 136
+                                },
+                                "end_location": {
+                                    "lat": 37.7750805,
+                                    "lng": -121.9942434
+                                },
+                                "html_instructions": "Head <b>southeast</b> on <b>Claremont Crest Ct</b> toward <b>Claremont Crest Way</b>",
+                                "polyline": {
+                                    "points": "k`qeFnjrgVHWPm@Ja@La@J]J[Lo@Hc@?_@Aw@"
+                                },
+                                "start_location": {
+                                    "lat": 37.775585,
+                                    "lng": -121.9960835
+                                },
+                                "travel_mode": "WALKING"
+                            },
+                            {
+                                "distance": {
+                                    "text": "187 ft",
+                                    "value": 57
+                                },
+                                "duration": {
+                                    "text": "1 min",
+                                    "value": 36
+                                },
+                                "end_location": {
+                                    "lat": 37.7745851,
+                                    "lng": -121.9940731
+                                },
+                                "html_instructions": "Turn <b>right</b> onto <b>Claremont Crest Way</b>",
+                                "maneuver": "turn-right",
+                                "polyline": {
+                                    "points": "g}peF~~qgV`Ba@"
+                                },
+                                "start_location": {
+                                    "lat": 37.7750805,
+                                    "lng": -121.9942434
+                                },
+                                "travel_mode": "WALKING"
+                            },
+                            {
+                                "distance": {
+                                    "text": "0.3 mi",
+                                    "value": 522
+                                },
+                                "duration": {
+                                    "text": "6 mins",
+                                    "value": 353
+                                },
+                                "end_location": {
+                                    "lat": 37.7746426,
+                                    "lng": -121.9882372
+                                },
+                                "html_instructions": "Turn <b>left</b> onto <b>Deerwood Dr</b>",
+                                "maneuver": "turn-left",
+                                "polyline": {
+                                    "points": "ezpeF|}qgVAKQqA_@qCGu@C[?YAY?_@?WAYEk@ASCe@?]?Y?U@WBc@JaBF_A?g@Ho@@OBQDSDQBQ@QBQ@S?W@Y@W"
+                                },
+                                "start_location": {
+                                    "lat": 37.7745851,
+                                    "lng": -121.9940731
+                                },
+                                "travel_mode": "WALKING"
+                            },
+                            {
+                                "distance": {
+                                    "text": "0.7 mi",
+                                    "value": 1203
+                                },
+                                "duration": {
+                                    "text": "15 mins",
+                                    "value": 876
+                                },
+                                "end_location": {
+                                    "lat": 37.7797445,
+                                    "lng": -121.9779282
+                                },
+                                "html_instructions": "Turn <b>left</b> onto <b>Deerwood Rd</b>",
+                                "maneuver": "turn-left",
+                                "polyline": {
+                                    "points": "ozpeFnypgVUAU?SASAWCk@G_@Ie@Kk@OWKQI_@QUMOIKEaAq@a@[YUg@g@SU]g@KKU[oAaC_@}@GIAGs@cBc@gAKSo@yAMc@Qm@Oq@CIAICKCUImACa@QcBCa@E{@Cm@?cAAaAC}C@kH@gA"
+                                },
+                                "start_location": {
+                                    "lat": 37.7746426,
+                                    "lng": -121.9882372
+                                },
+                                "travel_mode": "WALKING"
+                            },
+                            {
+                                "distance": {
+                                    "text": "62 ft",
+                                    "value": 19
+                                },
+                                "duration": {
+                                    "text": "1 min",
+                                    "value": 14
+                                },
+                                "end_location": {
+                                    "lat": 37.77958539999999,
+                                    "lng": -121.977842
+                                },
+                                "html_instructions": "Turn <b>right</b> onto <b>San Ramon Valley Blvd</b><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                                "maneuver": "turn-right",
+                                "polyline": {
+                                    "points": "kzqeF`yngV\\Q"
+                                },
+                                "start_location": {
+                                    "lat": 37.7797445,
+                                    "lng": -121.9779282
+                                },
+                                "travel_mode": "WALKING"
+                            }
+                        ],
+                        "traffic_speed_entry": [],
+                        "via_waypoint": []
+                    },
+                    {
+                        "distance": {
+                            "text": "1.2 mi",
+                            "value": 1975
+                        },
+                        "duration": {
+                            "text": "27 mins",
+                            "value": 1602
+                        },
+                        "end_address": "126 Claremont Crest Ct, San Ramon, CA 94583, USA",
+                        "end_location": {
+                            "lat": 37.775585,
+                            "lng": -121.9960835
+                        },
+                        "start_address": "2251 San Ramon Valley Blvd, San Ramon, CA 94583, USA",
+                        "start_location": {
+                            "lat": 37.77958539999999,
+                            "lng": -121.977842
+                        },
+                        "steps": [
+                            {
+                                "distance": {
+                                    "text": "62 ft",
+                                    "value": 19
+                                },
+                                "duration": {
+                                    "text": "1 min",
+                                    "value": 14
+                                },
+                                "end_location": {
+                                    "lat": 37.7797445,
+                                    "lng": -121.9779282
+                                },
+                                "html_instructions": "Head <b>northwest</b> on <b>San Ramon Valley Blvd</b> toward <b>Deerwood Rd</b>",
+                                "polyline": {
+                                    "points": "myqeFnxngV]P"
+                                },
+                                "start_location": {
+                                    "lat": 37.77958539999999,
+                                    "lng": -121.977842
+                                },
+                                "travel_mode": "WALKING"
+                            },
+                            {
+                                "distance": {
+                                    "text": "0.7 mi",
+                                    "value": 1203
+                                },
+                                "duration": {
+                                    "text": "16 mins",
+                                    "value": 982
+                                },
+                                "end_location": {
+                                    "lat": 37.7746426,
+                                    "lng": -121.9882372
+                                },
+                                "html_instructions": "Turn <b>left</b> onto <b>Deerwood Rd</b>",
+                                "maneuver": "turn-left",
+                                "polyline": {
+                                    "points": "kzqeF`yngVAfAAjHB|C@`A?bABl@Dz@B`@PbBB`@HlABTBJ@HBHNp@Pl@Lb@n@xAJRb@fAr@bB@FFH^|@nA`CTZJJ\\f@RTf@f@XT`@Z`Ap@JDNHTL^PPHVJj@Nd@J^Hj@FVBR@R@T?T@"
+                                },
+                                "start_location": {
+                                    "lat": 37.7797445,
+                                    "lng": -121.9779282
+                                },
+                                "travel_mode": "WALKING"
+                            },
+                            {
+                                "distance": {
+                                    "text": "0.3 mi",
+                                    "value": 522
+                                },
+                                "duration": {
+                                    "text": "7 mins",
+                                    "value": 436
+                                },
+                                "end_location": {
+                                    "lat": 37.7745851,
+                                    "lng": -121.9940731
+                                },
+                                "html_instructions": "Turn <b>right</b> onto <b>Deerwood Dr</b>",
+                                "maneuver": "turn-right",
+                                "polyline": {
+                                    "points": "ozpeFnypgVAVAX?VARCPAPCPEPERCPANIn@?f@G~@K`BCb@AV?T?X?\\Bd@@RDj@@X?V?^@X?XBZFt@^pCPpA@J"
+                                },
+                                "start_location": {
+                                    "lat": 37.7746426,
+                                    "lng": -121.9882372
+                                },
+                                "travel_mode": "WALKING"
+                            },
+                            {
+                                "distance": {
+                                    "text": "187 ft",
+                                    "value": 57
+                                },
+                                "duration": {
+                                    "text": "1 min",
+                                    "value": 51
+                                },
+                                "end_location": {
+                                    "lat": 37.7750805,
+                                    "lng": -121.9942434
+                                },
+                                "html_instructions": "Turn <b>right</b> onto <b>Claremont Crest Way</b>",
+                                "maneuver": "turn-right",
+                                "polyline": {
+                                    "points": "ezpeF|}qgVaB`@"
+                                },
+                                "start_location": {
+                                    "lat": 37.7745851,
+                                    "lng": -121.9940731
+                                },
+                                "travel_mode": "WALKING"
+                            },
+                            {
+                                "distance": {
+                                    "text": "0.1 mi",
+                                    "value": 174
+                                },
+                                "duration": {
+                                    "text": "2 mins",
+                                    "value": 119
+                                },
+                                "end_location": {
+                                    "lat": 37.775585,
+                                    "lng": -121.9960835
+                                },
+                                "html_instructions": "Turn <b>left</b> onto <b>Claremont Crest Ct</b><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                                "maneuver": "turn-left",
+                                "polyline": {
+                                    "points": "g}peF~~qgV@v@?^Ib@Mn@KZK\\M`@K`@Ql@IV"
+                                },
+                                "start_location": {
+                                    "lat": 37.7750805,
+                                    "lng": -121.9942434
+                                },
+                                "travel_mode": "WALKING"
+                            }
+                        ],
+                        "traffic_speed_entry": [],
+                        "via_waypoint": []
+                    }
+                ],
+                "overview_polyline": {
+                    "points": "k`qeFnjrgVt@iCVy@VsAAwA`Ba@AKq@cFKqAAkBM_C@eBNeCFgBTeBNgAD}AsAEcAKeAUcA[q@[e@WmAw@{@q@{@}@i@s@U[oAaCg@gAu@kBo@{A}@}Bg@sBUqCUeCIiBAeCAiM@gA\\Q]PAfA@hM@dCHhBTdCTpCf@rB|@|Bn@zAt@jBf@fAnA`CTZh@r@z@|@z@p@lAv@d@Vp@ZbAZdATbAJrADE|AOfAUdBGfBOdCAdBL~B@jBJpAp@bF@JaB`@@vAWrAWx@u@hC"
+                },
+                "summary": "Deerwood Dr",
+                "warnings": [
+                    "Walking directions are in beta.    Use caution – This route may be missing sidewalks or pedestrian paths."
+                ],
+                "waypoint_order": [
+                    0
+                ]
+            }
+        ],
+        "status": "OK"
+    }
+}

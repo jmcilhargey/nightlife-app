@@ -1,5 +1,7 @@
 "use strict";
 
+"use strict";
+require("dotenv").config();
 var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 var User = require("./user.js");
 

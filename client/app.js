@@ -139,6 +139,10 @@ angular.module("nightlifeApp", ["ui.router"])
             .state("home.search", {
                 url: "/search",
                 templateUrl: "/views/search.html"
+            })
+            .state("home.directions", {
+                url: "/directions",
+                templateUrl: "/views/directions.html"
             });
         $urlRouterProvider.otherwise("/home/welcome");
     }]);

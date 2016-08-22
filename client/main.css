@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     color: white;
@@ -51,7 +52,7 @@ body {
 }
 
 .jumbotron {
-    height: 550px;
+    height: 400px;
     margin: 0;
     padding: 0;
     border-radius: 0 !important;
@@ -61,32 +62,39 @@ body {
 
 .jumbotron h1 {
     margin: 0;
-    padding-top: 150px;
+    padding-top: 100px;
     text-align: center;
     color: white;
     text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+    font-size: 3em;
     font-weight: 100;
 }
 
 .input-group {
-    margin: 0 auto;
-    width: 70%;
+    margin: 5px auto;
+    width: 60%;
+}
+
+.input-group-btn {
+    font-size: 0.75em;
+    border-radius: 0;
 }
 
 .form-control,
 .btn.btn-default
 {
-    margin-top: 2em;
-    font-size: 28px;
+    margin-top: 50px;
+    font-size: 2em;
     background-color: rgba(0, 0, 0, 0);
     color: white;
     border: 2px solid white;
+    border-radius: 0;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
     font-weight: 100;
 }
 
 .form-control {
-    padding: 26px;
+    padding: 21px 10px;
 }
 
 .form-control:focus,
@@ -102,10 +110,15 @@ body {
     background-color: rgba(0, 0, 0, 0.25);
 }
 
+.radio-label {
+    font-size: 1em;
+    vertical-align: middle;
+    padding-right: 15px;
+}
+
 .radio-inline {
     color: white;
-    padding-top: 10px;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 100;
     letter-spacing: 1px;
 }
@@ -145,7 +158,7 @@ body {
 #image2,
 #image3 {
     height: 200px;  
-    border: 4px solid #7B7882;
+    border: 3px solid #7B7882;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }
@@ -280,5 +293,10 @@ blockquote {
     list-style: none;
     color: #999;
     padding: 0;
+}
+
+#map {
+  height: 600px;
+  width: 100%;
 }
 

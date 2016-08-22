@@ -13,7 +13,7 @@
                     <li ng-show="authenticated"><a href="auth/logout" target="_self"><i class="fa fa-google-plus"></i>&nbsp;Sign Out</a></li>
                     <li><a href="#about" target="_self">About</a></li>
                     <li><a href="#popular" target="_self">Popular</a></li>                    
-                    <li><a href="#contact" target="_self">Contact</a></li>
+                    <li><a ui-sref="home.directions" target="_self">Directions</a></li>
                 </ul>
             </div>
         </nav>
@@ -27,6 +27,7 @@
                 </span>
             </div>
             <div class="input-group">
+                <span class="radio-label">Sort by</span>
                 <label class="radio-inline"><input type="radio" name="option" ng-model="sort" value="0" required>Match</label>
                 <label class="radio-inline"><input type="radio" name="option" ng-model="sort" value="1">Distance</label>
                 <label class="radio-inline"><input type="radio" name="option" ng-model="sort" value="2">Rating</label>
