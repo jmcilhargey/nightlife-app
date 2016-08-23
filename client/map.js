@@ -1,6 +1,6 @@
 "use strict";
 
-function initMap() {
+function initializeMap() {
 
   	var styles = [
 	    {
@@ -106,11 +106,20 @@ function initMap() {
 	        ]
 	    },
 	    {
-	        "featureType": "transit",
+	        "featureType": "transit.line",
 	        "elementType": "all",
 	        "stylers": [
 	            {
 	                "color": "#CCFF90"
+	            }
+	        ]
+	    },
+	   	{
+	        "featureType": "transit.station",
+	        "elementType": "geometry",
+	        "stylers": [
+	            {
+	                "color": "#424242"
 	            }
 	        ]
 	    },
@@ -140,11 +149,9 @@ function initMap() {
 		"clickableIcons": true,
 		"mapTypeId": "roadmap",
 		"styles": styles,
-		"zoom": 10
     });
 
     googleMap.fitBounds(mapBounds);
-
     googleMap.setCenter(mapBounds.getCenter());
 
     var wayPoints = [
@@ -187,12 +194,18 @@ function initMap() {
         }
 	];
 
+	var info = [
+		"name1",
+		"name2",
+		"name3"
+	];
+
     var pathPolyline = new google.maps.Polyline({
-		path: getPathCoordinates(),
-		geodesic: true,
-		strokeColor: "#7C4DFF",
-		strokeOpacity: 1.0,
-		strokeWeight: 2
+		"path": getPathCoordinates(),
+		"geodesic": true,
+		"strokeColor": "#7C4DFF",
+		"strokeOpacity": 1.0,
+		"strokeWeight": 3
     });
 
     pathPolyline.setMap(googleMap);
@@ -200,31 +213,52 @@ function initMap() {
     dropMarkers(wayPoints, pointCoords);
 
     function getPathCoordinates() {
-	return google.maps.geometry.encoding.decodePath("k`qeFnjrgVt@iCVy@VsAAwA`Ba@AKq@cFKqAAkBM_C@eBNeCFgBTeBNgAD}AsAEcAKeAUcA[q@[e@WmAw@{@q@{@}@i@s@U[oAaCg@gAu@kBo@{A}@}Bg@sBUqCUeCIiBAeCAiM@gA\\Q]PAfA@hM@dCHhBTdCTpCf@rB|@|Bn@zAt@jBf@fAnA`CTZh@r@z@|@z@p@lAv@d@Vp@ZbAZdATbAJrADE|AOfAUdBGfBOdCAdBL~B@jBJpAp@bF@JaB`@@vAWrAWx@u@hC")
+	return google.maps.geometry.encoding.decodePath("k`qeFnjrgVt@iCVy@VsAAwA`Ba@AKq@cFKqAAkBM_C@eBNeCFgBTeBNgAD}AsAEcAKeAUcA[q@[e@WmAw@{@q@{@}@i@s@U[oAaCg@gAu@kBo@{A}@}Bg@sBUqCUeCIiBAeCAiM@gA\\QzAo@^QFOn@[`AYd@E\\@XFd@RVPb@b@l@x@H?JBJPRVRNh@TRBTAZEh@YrAs@\\[`@e@l@kAXq@Lc@Mb@Yp@m@jAa@d@]ZsAr@i@X[DU@SCi@USOSWKQKCI?m@y@c@c@WQe@SYG]Ae@DaAXo@ZOC_@NuB~@u@XyCjAA@IN{ChAw@Zi@R`Bo@`@~B@@^IBBJf@VzASHOFjBfKJ\\BAtCEJHF`@n@@TpCf@rB|@|Bn@zAt@jBf@fAnA`CTZh@r@z@|@z@p@lAv@d@Vp@ZbAZdATbAJrADE|AOfAUdBGfBOdCAdBL~B@jBJpAp@bF@JaB`@@vAWrAWx@u@hC")
 	}
-
-	var marker;
 
 	function dropMarkers(wayPoints, pointCoords) {
 		for (var i = 0; i < wayPoints.length; i++) {
-			setTimeout(function() {
-				addMarker(wayPoints[i], pointCoords[i]);
-			}, i * 250);
+			(function(i) {
+				setTimeout(function() {
+					addMarker(wayPoints, pointCoords, info, i);
+				}, (i + 1) * 500);
+			})(i);
 		}
 	}
 
-	function addMarker(wayPoint, pointCoord) {
+	var marker;
+	var infoWindow;
+
+	function addMarker(wayPoints, pointCoords, info, i) {
 
 		marker = new google.maps.Marker({
-			map: googleMap,
-			draggable: true,
-			animation: google.maps.Animation.DROP,
-			place: {
-				location: pointCoord,
-				placeId: wayPoint.place_id
+			"map": googleMap,
+			"draggable": true,
+			"animation": google.maps.Animation.DROP,
+			"place": {
+				"location": pointCoords[i],
+				"placeId": wayPoints[i].place_id
+			},
+			"icon": {
+				"url": "../images/purple-icon.png"
+			},
+			"label": {
+				"text": (i + 1).toString(),
+				"color": "white",
 			}
 		});
+
+		infoWindow = new google.maps.InfoWindow();
+
+		marker.addListener("click", (function(marker, i) {
+			return function() {
+				infoWindow.open(googleMap, marker);
+				infoWindow.setContent(info[i]);				
+			}
+		})(marker, i));
 	}
 }
+
+// google.maps.event.addDomListener(window, "load", initializeMap());
 
 

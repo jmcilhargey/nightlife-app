@@ -15,10 +15,9 @@
                     <li>Reviews - {{ business.review_count }}</li>
                     <li>Type - {{ business.categories[0][0] }}</li>                    
                 </ul>
-            </div>
-            <div class="flex-snippet">
+            </div>            <div class="flex-snippet">
                 <em>{{ business.snippet_text }}</em>
-                <div class="btn btn-primary btn-lg" ng-click="addGoing(business.id)" data-toggle="tooltip" title="{{ listGoing(business.id) }}" data-placement="bottom" tooltip>Going Tonight - <span ng-bind="checkGoing(business.id)"></span></div>
+                <div class="btn btn-primary btn-lg" ng-click="addGoing(business.id, business.location.display_address[0], business.location.display_address[1])" data-toggle="tooltip" title="{{ listGoing(business.id) }}" data-placement="bottom" tooltip>Going Tonight - <span ng-bind="checkGoing(business.id)"></span></div>
             </div>
         </div>
     </div>

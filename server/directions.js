@@ -17,6 +17,7 @@ module.exports = function() {
 			destination: start,
 			mode: mode,
 			waypoints: waypoints,
+			avoid: "tolls|highways|ferries",
 			language: "english",
 			units: "imperial",
 			optimize: true,

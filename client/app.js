@@ -13,11 +13,11 @@ angular.module("nightlifeApp", ["ui.router"])
                     params: { searchCity: city, sortBy: sort }
                 });
             },
-            join: function(id) {
+            join: function(id, address1, address2) {
                 return $http({
                     method: "PUT",
                     url: "api/join",
-                    data: { businessId: id }
+                    data: { businessId: id, businessAddress: (address1 + " " + address2) }
                 });
             },
             going: function(businesses) {
@@ -74,8 +74,8 @@ angular.module("nightlifeApp", ["ui.router"])
             return $scope.count;
         };
         
-        $scope.addGoing = function(businessId) {
-            Search.join(businessId).success(function() {
+        $scope.addGoing = function(businessId, address1, address2) {
+            Search.join(businessId, address1, address2).success(function() {
                 Search.going($scope.businessList).success(function(data) {
                     $scope.going = data;
                     $scope.listGoing(businessId);

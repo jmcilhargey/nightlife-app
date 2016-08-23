@@ -64,17 +64,19 @@ router.get("/api/user", isLoggedIn, function(req, res) {
 });
 
 router.put("/api/join", isLoggedIn, function(req, res) {
+
   var found;
   
   Users.findOne({ "google.id" : req.user.google.id }, function(err, doc) {
+    console.log(doc);
     if (err) { throw err; }
 
     if (doc.events.indexOf(req.body.businessId) == -1) {
       found = false;
-      Users.findOneAndUpdate({ "google.id": req.user.google.id }, { $push : { "events": req.body.businessId } }).exec("update");
+      Users.findOneAndUpdate({ "google.id": req.user.google.id }, { $push : { "events": { "business": req.body.businessId, "address": req.body.businessAddress } } }).exec("update");
     } else {
       found = true;
-      Users.findOneAndUpdate({ "google.id": req.user.google.id }, { $pull : { "events": req.body.businessId } }).exec("update");
+      Users.findOneAndUpdate({ "google.id": req.user.google.id }, { $pull : { "events": { "business": req.body.businessId, "address": req.body.businessAddress } } }).exec("update");
     }
   });
   
@@ -101,12 +103,16 @@ router.put("/api/join", isLoggedIn, function(req, res) {
   res.sendStatus(200);
 });
 
-router.get("/api/directions", function(req, res) {
+router.get("/api/directions", isLoggedIn, function(req, res) {
 
-  googleApi.get("126 Claremont Crest Ct, San Ramon, CA", "walking", ["2251 San Ramon Valley Blvd, San Ramon, CA", "2410 San Ramon Valley Blvd #130, San Ramon, CA", "2154 San Ramon Valley Blvd, San Ramon, CA"])
+  Users.findOne({ "google.id" : req.user.google.id }, function(err, doc) {
+    console.log(doc);
+  });
+
+  googleApi.get("126 Claremont Crest Ct, San Ramon, CA", "walking", "2251 San Ramon Valley Blvd, San Ramon, CA | 2410 San Ramon Valley Blvd #130, San Ramon, CA | 2154 San Ramon Valley Blvd, San Ramon, CA")
     .then(function(value) { 
       fs.writeFile("directions.txt", JSON.stringify(value, null, 4));
-      es.send({ success: 200 }); 
+      res.send({ success: 200 }); 
     }, function(error) {
       res.json(error); })
 });

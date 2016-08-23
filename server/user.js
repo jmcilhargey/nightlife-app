@@ -10,7 +10,10 @@ var User = new Schema({
         name: String,
         email: String
     },
-    events: [String]
+    events: [{
+    	business: String,
+    	address: String
+    }]
 }, { versionKey: false });
 
 module.exports = mongoose.model("User", User);
