@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
     <div class="results">
         <div ng-class-odd="'row odd'" ng-class-even="'row even'" ng-repeat="business in results.businesses">
             <div class="flex-thumbnail">
@@ -17,7 +17,7 @@
                 </ul>
             </div>            <div class="flex-snippet">
                 <em>{{ business.snippet_text }}</em>
-                <div class="btn btn-primary btn-lg" ng-click="addGoing(business.id, business.location.display_address[0], business.location.display_address[1])" data-toggle="tooltip" title="{{ listGoing(business.id) }}" data-placement="bottom" tooltip>Going Tonight - <span ng-bind="checkGoing(business.id)"></span></div>
+                <div class="btn btn-primary btn-lg" ng-click="addGoing(business.name, business.location.display_address)" data-toggle="tooltip" title="{{ listGoing(business.name) }}" data-placement="bottom" tooltip>Going Tonight - <span ng-bind="checkGoing(business.name)"></span></div>
             </div>
         </div>
     </div>

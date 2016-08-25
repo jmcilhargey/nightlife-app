@@ -1,17 +1,16 @@
-<div class="container">
+<div class="container-fluid">
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <a ui-sref="home.welcome"><i class="fa fa-moon-o fa-2x">&nbsp;<span class="highlight">Nightlife</span>&nbsp;App</i></a>
                 <ul>
-                    <li>{{ user.name }}</li>
-                    <li>{{ user.email }}</li>
+                    <li>{{ user.google.name }}</li>
+                    <li>{{ user.google.email }}</li>
                 </ul>
             </div>
                 <ul class="nav nav-pills navbar-right">
                     <li ng-hide="authenticated"><a href="auth/google" target="_self"><i class="fa fa-google-plus"></i>&nbsp;Sign In</a></li>
                     <li ng-show="authenticated"><a href="auth/logout" target="_self"><i class="fa fa-google-plus"></i>&nbsp;Sign Out</a></li>
-                    <li><a href="#about" target="_self">About</a></li>
                     <li><a href="#popular" target="_self">Popular</a></li>                    
                     <li><a ui-sref="home.directions" target="_self">Directions</a></li>
                 </ul>
@@ -37,7 +36,7 @@
 </div>
     <ui-view></ui-view>
 
-<div class="container">
+<div class="container-fluid">
     <div class="footer" id="contact">
         <div class="row">
             <div class="col-xs-3 col-xs-offset-1">

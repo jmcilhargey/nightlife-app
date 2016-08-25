@@ -13,11 +13,11 @@ angular.module("nightlifeApp", ["ui.router"])
                     params: { searchCity: city, sortBy: sort }
                 });
             },
-            join: function(id, address1, address2) {
+            join: function(name, address) {
                 return $http({
                     method: "PUT",
                     url: "api/join",
-                    data: { businessId: id, businessAddress: (address1 + " " + address2) }
+                    data: { businessName: name, businessAddress: address }
                 });
             },
             going: function(businesses) {
@@ -53,7 +53,7 @@ angular.module("nightlifeApp", ["ui.router"])
                 
                 $scope.businessList = [];
                 data.businesses.forEach(function(element) {
-                    $scope.businessList.push(element.id);
+                    $scope.businessList.push(element.name);
                 });
                 
                 Search.going($scope.businessList).success(function(data) {
@@ -63,22 +63,22 @@ angular.module("nightlifeApp", ["ui.router"])
             });
         };
         
-        $scope.checkGoing = function(id) {
+        $scope.checkGoing = function(name) {
             $scope.count = 0;
         
             $scope.going.forEach(function(element) {
-                if (element.name === id) {
+                if (element.name === name) {
                     $scope.count = element.count;
                 }
             });
             return $scope.count;
         };
         
-        $scope.addGoing = function(businessId, address1, address2) {
-            Search.join(businessId, address1, address2).success(function() {
+        $scope.addGoing = function(businessName, address) {
+            Search.join(businessName, address).success(function() {
                 Search.going($scope.businessList).success(function(data) {
                     $scope.going = data;
-                    $scope.listGoing(businessId);
+                    $scope.listGoing(businessName);
                 });
             });
         };
