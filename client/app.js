@@ -8,7 +8,7 @@ angular.module("nightlifeApp", ["ui.router"])
         return {
             search: function(city, sort) {
                 return $http({
-                    method: "GET",
+                    method: "POST",
                     url: "api/search",
                     params: { searchCity: city, sortBy: sort }
                 });

@@ -42,12 +42,14 @@ router.get("/auth/logout", function (req, res) {
   res.redirect('/');
 });
 
-router.get("/api/search", function(req, res) {
+router.post("/api/search", function(req, res) {
   
-  yelpApi.search(req.query.searchCity, req.query.sortBy).then(function(data) {
-
-  res.json(data);
-  });
+  yelpApi.search(req.query.searchCity, req.query.sortBy)
+    .then(function(value) {
+      res.json(value);
+    }, function(reason) {
+      res.json(reason);
+    });
 });
 
 router.get("/api/going", function(req, res) {
@@ -112,11 +114,9 @@ router.put("/api/join", isLoggedIn, function(req, res) {
 
 router.post("/api/directions", isLoggedIn, function(req, res) {
 
-  console.log(req.body);
+  var wayPoints = "optimize:true|" + Object.keys(req.body.eventLegs).join("|");
 
-  var wayPoints = Object.keys(req.body).join("|");
-
-  googleApi.get("2640 Steiner Street, San Francisco, CA", "walking", wayPoints)
+  googleApi.search(req.body.startAddress, req.body.travelMethod, wayPoints)
     .then(function(value) {
       res.json(value.json);
 

@@ -1,31 +1,22 @@
-<style>
-
-input {
-	display: block;
-}
-
-</style>
-
 <div class="container-fluid">
 
-<div class="directions" id="about">
+	<div class="directions" id="about">
 		<h2>Find the best route to your events</h2>
         <form id="form">
         	<p>What's your starting address?</p>
-        	<input type="text" name="start" id="start_address" required />
+        	<input type="text" name="start" id="startAddress" required />
         	<p>How will you travel?</p>
-        	<input type="radio" name="travel_method" id="method_1" value="walking" />
-        	<label for="method_1">Walking</label>
-        	<input type="radio" name="travel_method" id="method_2" value="driving" />
-        	<label for="method_2">Driving</label>
+        	<input type="radio" name="travelMethod" id="method-1" value="walking" />
+        	<label for="method-1">Walking</label>
+        	<input type="radio" name="travelMethod" id="method-2" value="driving" />
+        	<label for="method-2">Driving</label>
         	<p>Which places do you want to go?</p>
-        </form>
-          
-        </div>
+        </form>      
     </div>
 
 	<div id="map"></div>
 
 </div>
+
 <script src="../directions.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBa0BY0W-oeI5kdpgD0mqjqI2zAIsXkM0Y&libraries=geometry"></script>

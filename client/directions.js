@@ -22,13 +22,14 @@
 
 					var input = document.createElement("input");
 					input.type = "checkbox";
+					input.id = "box-" + index;
 					input.name = location.business;
 					input.value = location.address;
 					form.appendChild(input);
 
 					var label = document.createElement("label");
-					label.setAttribute("for", input.name);
-					label.innerHTML = location.business + "<br>" + location.address;
+					label.setAttribute("for", "box-" + index);
+					label.innerHTML = location.business;
 					form.appendChild(label);
 
 				});
@@ -56,27 +57,27 @@
 			var inputs = document.getElementsByTagName("input");
 			var formData = {};
 
+			formData["eventLegs"] = {};
+
 			Array.prototype.forEach.call(inputs, function(input) {
 
-				if (input.id === "start_address") {
+				if (input.id === "startAddress") {
 					formData[input.id] = input.value;
 				}
 
-				if (input.name === "travel_method") {
+				if (input.name === "travelMethod" && input.checked) {
 					formData[input.name] = input.value;
 				}
 
-				if (input.type === "checkbox" && input.checked === true) {
-
-					formData[input.value] = input.name;
+				if (input.type === "checkbox" && input.checked) {
+					formData["eventLegs"][input.value] = input.name;
 				}
 			});
-			getPathData(formData);
+			getDirectionData(formData);
 		});
-
 	}
 
-	function getPathData(formData) {
+	function getDirectionData(formData) {
 
 		var request = new XMLHttpRequest();
 
@@ -112,8 +113,6 @@
 
 		function addMarker(address, location, i) {
 
-			console.log(matchAddress(address));
-
 			var marker = new google.maps.Marker({
 				"map": googleMap,
 				"draggable": true,
@@ -123,12 +122,17 @@
 					"placeId": directionsData.geocoded_waypoints[i].place_id
 				},
 				"icon": {
-					"url": "../images/purple-icon.png"
+					"url": "../images/purple-icon.png",
+					"scaledSize": new google.maps.Size(48, 48),
+					"labelOrigin": new google.maps.Point(23, 15)
 				},
 				"label": {
 					"text": (i + 1).toString(),
 					"color": "white",
-				}
+					"fontSize": "20px",
+					"fontWeight": "100"
+				},
+
 			});
 
 			var infoWindow = new google.maps.InfoWindow();
@@ -139,16 +143,15 @@
 					infoWindow.setContent(matchAddress(address) + "<p>" + address + "</p>");				
 				}
 			})(address, marker, i));
-		}	
+		}
 
 		function dropMarkers() {
 
 			route.legs.forEach(function(leg, i) {
-
 				(function(i) {
 					setTimeout(function() {
 						addMarker(leg.end_address, leg.end_location, i);
-					});
+					}, 250 * (i + 1));
 				})(i);
 			});
 		}
@@ -157,9 +160,14 @@
 
 			var street = address.slice(0, address.indexOf(","));
 
-			for (var key in formData) {
+			if (formData.startAddress.indexOf(street) > -1) {
+					return "<b>Starting Address</b><br>";
+			};
+
+			for (var key in formData.eventLegs) {
+
 				if (key.indexOf(street) > -1) {
-					return "<b>" + formData[key] + "</b><br>";
+					return "<b>" + formData.eventLegs[key] + "</b><br>";
 				}
 			}
 			return "";
@@ -168,7 +176,6 @@
 		var route = directionsData.routes[0];
 
 	    var googleMap = new google.maps.Map(document.getElementById("map"), {
-
 			"clickableIcons": true,
 			"mapTypeId": "roadmap",
 			"styles": loadStyles()
@@ -179,10 +186,7 @@
 	    googleMap.fitBounds(mapBounds);
 	    googleMap.setCenter(mapBounds.getCenter());
 
-
-
 	    var pathPolyline = new google.maps.Polyline({
-
 			"path": getPathCoordinates(),
 			"geodesic": true,
 			"strokeColor": "#7C4DFF",
@@ -326,9 +330,6 @@
 			        ]
 			    }
 			];
+		}
 	}
-}
-
-// google.maps.event.addDomListener(window, "load", initializeMap());
-
 })();

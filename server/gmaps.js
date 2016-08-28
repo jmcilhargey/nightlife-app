@@ -6,21 +6,20 @@ var stringToUrl = require("./serialize.js");
 
 module.exports = function() {
 
-	this.get = function(start, mode, waypoints) {
+	this.search = function(homeAddress, travelMode, wayPoints) {
 
 		var baseUrl = "https://maps.googleapis.com/maps/api/directions/json";
 
 		var key = process.env.GOOGLE_MAPS_KEY;
 
 		var options = {
-			origin: start,
-			destination: start,
-			mode: mode,
-			waypoints: waypoints,
+			origin: homeAddress,
+			destination: homeAddress,
+			mode: travelMode,
+			waypoints: wayPoints,
 			avoid: "tolls|highways|ferries",
 			language: "english",
 			units: "imperial",
-			optimize: true,
 			timeout: 1000
 		};
 
@@ -55,4 +54,3 @@ module.exports = function() {
 		return promise;
 	}
 }
-
