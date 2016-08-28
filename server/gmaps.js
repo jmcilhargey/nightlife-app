@@ -1,5 +1,4 @@
 "use strict";
-require("dotenv").config();
 
 var https = require("https");
 var stringToUrl = require("./serialize.js");

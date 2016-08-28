@@ -1,5 +1,5 @@
 "use strict";
-require("dotenv").config();
+
 var stringToUrl = require("./serialize.js");
 var oauth = require("oauth");
 var OAuth = oauth.OAuth;
